@@ -1,5 +1,6 @@
 {
   "name": "hypertable",
+  "homepage": "https://thunderducky.github.io/hypertable/",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -8,7 +9,7 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "predeploy" : "npm run build",
-    "deploy" : "gh-pages -d build"
+    "deploy" : "gh-pages -d dist"
   },
   "dependencies": {
     "react": "^18.2.0",
