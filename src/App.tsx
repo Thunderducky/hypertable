@@ -1,67 +1,61 @@
 import { useEffect, useState } from 'react'
 import './App.css'
 import { SimpleTable } from './components/SimpleTable'
-import { listIt, splitInto } from './utils'
+import { itemsTable } from './data/items.table'
+import { physicalEffects } from './data/magic/physicalEffects.table'
+import { physicalElements } from './data/magic/physicalElements.table'
+import { pickRandom } from './utils'
 
-type SimpleTable =  {
-  name: string,
-  entries: string[]
+function useRoller(size:number){
+  const [selectedIndex, setSelectedIndex] = useState(null as number | null)
+  const makeRoll = () => {
+    setSelectedIndex(Math.floor(Math.random() * size))
+  }
+  const clear = () => setSelectedIndex(null);
+  return [selectedIndex, makeRoll, clear] as const;
 }
 
-const simpleTable: SimpleTable = {
-  name: "Items",
-  entries: listIt`
-  Animal Scent
-  Bear Trap
-  Bedroll
-  Caltrops
-  Chain (10 ft.)
-  Chalk
+console.log(`${pickRandom(physicalEffects.entries)} ${pickRandom(physicalElements.entries)}`)
 
-  Chisel
-  Crowbar
-  Fishing Net
-  Glass Marbles
-  Glue
-  Grappling Hook
-
-  Grease
-  Hacksaw
-  Hammer
-  Hand drill
-  Horn
-  Iron spikes
-
-  Iron tongs
-  Lantern and Oil
-  Large Sack
-  Lockpicks(3)
-  Manacles
-  Medicine (3)
-
-  Metal file
-  Rations (3)
-  Rope (50 ft.)
-  Steel wire
-  Shovel
-  Steel mirror
-
-  Ten Foot Pole
-  Tinderbox
-  Torch
-  Vial of Acid
-  Vial of Poison
-  Waterskin
-  `
-}
+const isNums = (...n:(number | null | undefined)[]) => n.every(n => +(n as any) === n); 
 
 function App() {
+  // Hook for a shifty number
+  const [result, roll] = useRoller(itemsTable.entries.length);
+  const [result2, roll2] = useRoller(physicalEffects.entries.length);
+  const [result3, roll3] = useRoller(physicalEffects.entries.length);
+  const spellName = isNums(result2, result3) 
+    ? `${physicalEffects.entries[result2 as number]} ${physicalElements.entries[result3 as number]}`
+    : '';
+  console.log([result, result2, result3].map(r => (r || 0).toString(6)));
   return (
-    <div className="App">
+    <div className="App display flex-col justify-center ">
       <h1 className="text-3xl">Hypertable</h1>
       <h2 className="text-slate-500">Rolling on embedded tables</h2>
+      <div>
+        <button className="my-6" onClick={() => roll()}>Pick a Random Item</button>
+        <SimpleTable label="Items" entries={itemsTable.entries} selectedIndex={result} />
+      </div>
       <br />
-      <SimpleTable entries={simpleTable.entries} />
+      <br />
+      <h3 className='text-xl'>Magic</h3>
+      <button onClick={() => { roll2(); roll3();}}>Generate New Spell</button>
+      {
+        spellName !== ""
+          ? <div className='p-3'>{spellName}</div>
+          : <></>
+      }
+      
+      <div className="flex">
+        <div>
+          <SimpleTable label="Physical Effects" entries={physicalEffects.entries} selectedIndex={result2} />
+          <button className="my-6" onClick={() => roll2()}>Pick a Random Physical Effect</button>
+        </div>
+        <div>
+          <SimpleTable label="Physical Effects" entries={physicalElements.entries} selectedIndex={result3} />
+          <button className="my-6" onClick={() => roll3()}>Pick a Random Physical Element</button>
+        </div>
+      </div>
       
     </div>
   )

@@ -1,7 +1,7 @@
 import { splitInto } from "../utils"
 
-export const SimpleTable = ({ entries, selectedIndex }: { entries: string[], selectedIndex?: number | null }) => {
-  selectedIndex = null;
+export const SimpleTable = ({ label, entries, selectedIndex }: { label: string, entries: string[], selectedIndex?: number | null }) => {
+  console.log(label, selectedIndex, entries.length)
   const textColor = (index: number) => {
     if (selectedIndex != 0 && !selectedIndex) { return 'text-slate-400' }
     else {
@@ -9,8 +9,8 @@ export const SimpleTable = ({ entries, selectedIndex }: { entries: string[], sel
     }
   }
   return <div>
-    <h2 className="text-xl">Items</h2>
-    <div className="flex flex-row">
+    <h2 className="text-xl">{label}</h2>
+    <div className="flex flex-row justify-center">
       {splitInto(entries, 6).map((collection, index) => {
         return <div
           key={`group_${index}`}
@@ -18,7 +18,7 @@ export const SimpleTable = ({ entries, selectedIndex }: { entries: string[], sel
           {
             collection.map((item, _index) => {
               return <p
-                className={textColor(_index * 6 + index)}
+                className={textColor(index * 6 + _index)}
                 key={`${item}_${index}_${_index}`}
               >{item as string}</p>
             })

@@ -8,11 +8,21 @@ export const splitInto = <T>(arr:T[], amount:number) => {
   return arrs;
 }
 
+export const pickRandom = <T>(arr:T[]):T => {
+  return arr[
+    Math.floor(Math.random() * arr.length)
+  ];
+}
+
 export const listIt = (strings:TemplateStringsArray, ...keys:string[]) => {
   const lastIndex = strings.length - 1;
   const newText = strings
     .slice(0, lastIndex)
     .reduce((p, s, i) => p + s + keys[i], '')
     + strings[lastIndex];
-  return newText.split("\n").map(t => t.trim()).filter(t => t !== "");
+  return newText
+    .split("\n") // Split by newline
+    .map(t => t.split("#")[0]) // Ignore comments
+    .map(t => t.trim()) // Ignore whitespace
+    .filter(t => t !== "");
 };
