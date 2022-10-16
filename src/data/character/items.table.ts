@@ -1,5 +1,5 @@
-import { listIt } from "../utils"
-import { SimpleTable } from "./types"
+import { listIt } from "../../utils"
+import { SimpleTable } from "../types"
 
 export const itemsTable: SimpleTable = {
   name: "Items",

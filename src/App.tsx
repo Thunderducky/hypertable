@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import './App.css'
 import { SimpleTable } from './components/SimpleTable'
-import { itemsTable } from './data/items.table'
+import { itemsTable } from './data/character/items.table'
 import { physicalEffects } from './data/magic/physicalEffects.table'
 import { physicalElements } from './data/magic/physicalElements.table'
 import { pickRandom } from './utils'
