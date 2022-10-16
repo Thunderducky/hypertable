@@ -24,6 +24,9 @@ function App() {
   const [result, roll] = useRoller(itemsTable.entries.length);
   const [result2, roll2] = useRoller(physicalEffects.entries.length);
   const [result3, roll3] = useRoller(physicalEffects.entries.length);
+  const itemName = isNums(result)
+    ? `${itemsTable.entries[result as number]}`
+    : '';
   const spellName = isNums(result2, result3) 
     ? `${physicalEffects.entries[result2 as number]} ${physicalElements.entries[result3 as number]}`
     : '';
@@ -32,6 +35,11 @@ function App() {
     <div className="App display flex-col justify-center ">
       <h1 className="text-3xl">Hypertable</h1>
       <h2 className="text-slate-500">Rolling on embedded tables</h2>
+      {
+        itemName !== ""
+          ? <div className='p-3'>{itemName}</div>
+          : <></>
+      }
       <div>
         <button className="my-6" onClick={() => roll()}>Pick a Random Item</button>
         <SimpleTable label="Items" entries={itemsTable.entries} selectedIndex={result} />
