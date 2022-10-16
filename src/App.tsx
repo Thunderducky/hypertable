@@ -1,32 +1,68 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
+import { useEffect, useState } from 'react'
 import './App.css'
+import { SimpleTable } from './components/SimpleTable'
+import { listIt, splitInto } from './utils'
+
+type SimpleTable =  {
+  name: string,
+  entries: string[]
+}
+
+const simpleTable: SimpleTable = {
+  name: "Items",
+  entries: listIt`
+  Animal Scent
+  Bear Trap
+  Bedroll
+  Caltrops
+  Chain (10 ft.)
+  Chalk
+
+  Chisel
+  Crowbar
+  Fishing Net
+  Glass Marbles
+  Glue
+  Grappling Hook
+
+  Grease
+  Hacksaw
+  Hammer
+  Hand drill
+  Horn
+  Iron spikes
+
+  Iron tongs
+  Lantern and Oil
+  Large Sack
+  Lockpicks(3)
+  Manacles
+  Medicine (3)
+
+  Metal file
+  Rations (3)
+  Rope (50 ft.)
+  Steel wire
+  Shovel
+  Steel mirror
+
+  Ten Foot Pole
+  Tinderbox
+  Torch
+  Vial of Acid
+  Vial of Poison
+  Waterskin
+  `
+}
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/hypertable/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <h1 className="text-3xl">Hypertable</h1>
+      <h2 className="text-slate-500">Rolling on embedded tables</h2>
+      <br />
+      <SimpleTable entries={simpleTable.entries} />
+      
     </div>
   )
 }
