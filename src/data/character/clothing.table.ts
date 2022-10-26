@@ -45,5 +45,5 @@ export const clothingTable: SimpleTable = {
     Undersized
     Wine-stained
     Worn out
-  `
+  `()
 }

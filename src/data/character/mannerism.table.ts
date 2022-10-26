@@ -45,5 +45,5 @@ export const mannerismTable: SimpleTable = {
     Trails off
     Very loud
     Whispers
-  `
+  `()
 }

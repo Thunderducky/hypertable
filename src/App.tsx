@@ -4,7 +4,7 @@ import { SimpleTable } from './components/SimpleTable'
 import { itemsTable } from './data/character/items.table'
 import { physicalEffects } from './data/magic/physicalEffects.table'
 import { physicalElements } from './data/magic/physicalElements.table'
-import { pickRandom } from './utils'
+import { listIt, pickRandom } from './utils'
 
 function useRoller(size:number){
   const [selectedIndex, setSelectedIndex] = useState(null as number | null)
@@ -14,8 +14,6 @@ function useRoller(size:number){
   const clear = () => setSelectedIndex(null);
   return [selectedIndex, makeRoll, clear] as const;
 }
-
-console.log(`${pickRandom(physicalEffects.entries)} ${pickRandom(physicalElements.entries)}`)
 
 const isNums = (...n:(number | null | undefined)[]) => n.every(n => +(n as any) === n); 
 
@@ -30,7 +28,6 @@ function App() {
   const spellName = isNums(result2, result3) 
     ? `${physicalEffects.entries[result2 as number]} ${physicalElements.entries[result3 as number]}`
     : '';
-  console.log([result, result2, result3].map(r => (r || 0).toString(6)));
   return (
     <div className="App display flex-col justify-center ">
       <h1 className="text-3xl">Hypertable</h1>
@@ -70,3 +67,18 @@ function App() {
 }
 
 export default App
+
+
+const test = (strings:TemplateStringsArray, ...keys:string[]) => {
+  const lastIndex = strings.length - 1;
+  const newText = strings
+    .slice(0, lastIndex)
+    .reduce((p, s, i) => p + s + keys[i], '')
+    + strings[lastIndex];
+  return (text:string) => {
+    return newText + text;
+  }
+}
+
+
+console.log(itemsTable.entries);

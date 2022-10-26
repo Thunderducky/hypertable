@@ -45,5 +45,5 @@ export const personalityTable: SimpleTable = {
     Stuck-up
     Suspicious
     Wisecracking
-  `
+  `()
 }

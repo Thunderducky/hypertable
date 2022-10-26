@@ -1,7 +1,6 @@
 import { splitInto } from "../utils"
 
 export const SimpleTable = ({ label, entries, selectedIndex }: { label: string, entries: string[], selectedIndex?: number | null }) => {
-  console.log(label, selectedIndex, entries.length)
   const textColor = (index: number) => {
     if (selectedIndex != 0 && !selectedIndex) { return 'text-slate-400' }
     else {
