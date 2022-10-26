@@ -45,5 +45,5 @@ export const physicalElements: SimpleTable = {
   Wine
   Wood
   Worm
-  `
+  `()
 }

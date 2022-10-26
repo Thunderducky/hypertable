@@ -45,5 +45,5 @@ export const etherealElementsTable: SimpleTable = {
     Warp
     Whisper
     Wind
-  `
+  `()
 }

@@ -45,5 +45,5 @@ export const etherealEffectsTable: SimpleTable = {
     Warding
     Wearying
     Withering
-  `
+  `()
 }

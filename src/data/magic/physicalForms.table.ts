@@ -45,5 +45,5 @@ export const physicalFormTable: SimpleTable = {
     Trap
     Wall
     Web
-  `
+  `()
 }

@@ -45,5 +45,5 @@ export const etherealFormsTable: SimpleTable = {
     Vortex
     Wave
     Word
-  `
+  `()
 }

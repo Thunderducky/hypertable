@@ -45,5 +45,5 @@ export const physicalEffects: SimpleTable = {
   Spawning
   Transmuting
   Transporting
-  `
+  `()
 }
