@@ -4,46 +4,11 @@ import { SimpleTable } from "../types"
 export const appearanceTable: SimpleTable = {
   name: "Appearance",
   entries: listIt`
-  Aquilline
-  Athletic
-  Barrel-Chested
-  Boney
-  Brawny
-  Brutish
-
-  Bullnecked
-  Chieseld
-  Coltish
-  Corpulent
-  Craggy
-  Delicate
-
-  Furrowed
-  Gaunt
-  Gorgeous
-  Grizzled
-  Haggard
-  Handsome
-
-  Hideous
-  Lanky
-  Pudgy
-  Ripped
-  Rosy
-  Scrawny
-
-  Sinewy
-  Slender
-  Slumped
-  Solid
-  Square-Jawed
-  Statuesque
-
-  Towering
-  Trim
-  Weathered
-  Willowy
-  Wiry
-  Wrinkled
-  `()
+  Aquilline       Bullnecked    Furrowed    Hideous   Sinewy        Towering
+  Athletic        Chieseld      Gaunt       Lanky     Slender       Trim
+  Barrel-Chested  Coltish       Gorgeous    Pudgy     Slumped       Weathered
+  Boney           Corpulent     Grizzled    Ripped    Solid         Willowy
+  Brawny          Craggy        Haggard     Rosy      Square-Jawed  Wiry
+  Brutish         Delicate      Handsome    Scrawny   Statuesque    Wrinkled
+  `("  ", true)
 }
