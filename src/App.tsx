@@ -4,6 +4,7 @@ import { SimpleTable } from './components/SimpleTable'
 import { itemsTable } from './data/character/items.table'
 import { physicalEffects } from './data/magic/physicalEffects.table'
 import { physicalElements } from './data/magic/physicalElements.table'
+import { leaf, makeSimpleTable, simpleTable } from './data/types'
 import { listIt, pickRandom } from './utils'
 
 function useRoller(size:number){
@@ -81,4 +82,5 @@ const test = (strings:TemplateStringsArray, ...keys:string[]) => {
 }
 
 
-console.log(itemsTable.entries);
+console.log(makeSimpleTable(listIt`Hello  Hallo  Hola  Yo`('  '))(leaf(1)).resolvedText)
+console.log(makeSimpleTable(listIt`Bye  Seeya  God Be With You  Godspeed`('  '))(leaf(1)).resolvedText)
