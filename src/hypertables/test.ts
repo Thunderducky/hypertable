@@ -1,17 +1,16 @@
-import { hyper } from "."
-
-export const Color = hyper("Color")`
-  Red
-  Blue
-  Gray
+import { generate, hyper } from "."
+const splitter  = "   "
+export const Color = hyper("Color", { splitter })`
+  Red     Blue    Gray
 `
-
-export const Form = hyper("Form")`
-  Sword
-  Spear
-  Shield
+export const Shade = hyper("Shade", {splitter })`
+  Transparent     ${Color}      Light ${Color}     Dark ${Color}
+`
+export const Form = hyper("Form", { splitter })`
+  Sword     Spear     Shield
 `
 export const Weapon = hyper("Test2")`
-  ${Color} ${Form}
+  ${Shade} ${Form}
   Plain ${Form}
 `
+generate(Weapon)
