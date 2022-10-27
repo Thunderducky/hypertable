@@ -13,4 +13,11 @@ export const Weapon = hyper("Test2")`
   ${Shade} ${Form}
   Plain ${Form}
 `
-generate(Weapon)
+console.log(`
+
+${generate(Weapon)}
+${generate(Weapon)}
+${generate(Weapon)}
+${generate(Weapon)}
+
+`)
